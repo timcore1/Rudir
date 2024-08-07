@@ -6,7 +6,7 @@
     Создайте файл со списком слов (wordlist), например, `wordlist.txt`, который будет содержать пути для брутфорс-атаки, по одному на строку.
     Запустите скрипт, указав URL целевого веб-сервера и путь к файлу со списком слов:
 
-`ruby rudir.rb http://example.ru wordlist.txt`
+`ruby rudir.rb https://example.ru wordlist.txt`
 
 Пример содержимого файла wordlist.txt:
 
