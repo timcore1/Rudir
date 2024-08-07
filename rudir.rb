@@ -8,10 +8,16 @@ class BruteForcer
   end
 
   def run
+    uri = URI.parse(@url)
+    http = Net::HTTP.new(uri.host, uri.port)
+    http.use_ssl = true if uri.scheme == 'https'
+
     File.foreach(@wordlist) do |line|
       path = line.strip
       full_url = URI.join(@url, path).to_s
-      response = Net::HTTP.get_response(URI(full_url))
+      request = Net::HTTP::Get.new(full_url)
+
+      response = http.request(request)
 
       if response.code.to_i == 200
         puts "[+] Found: #{full_url}"
@@ -23,7 +29,7 @@ class BruteForcer
 end
 
 if ARGV.length != 2
-  puts "Usage: ruby rudir.rb <URL> <wordlist>"
+  puts "Usage: ruby brute_forcer.rb <URL> <wordlist>"
   exit(1)
 end
 
