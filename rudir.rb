@@ -23,7 +23,7 @@ class BruteForcer
 end
 
 if ARGV.length != 2
-  puts "Usage: ruby brute_forcer.rb <URL> <wordlist>"
+  puts "Usage: ruby rudir.rb <URL> <wordlist>"
   exit(1)
 end
 
